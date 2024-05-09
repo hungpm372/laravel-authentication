@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: 'Laravel Authentication API'
+  description: 'This API serves as a comprehensive solution for user authentication and registration within a Laravel application environment. It empowers users with essential functionalities including registration, login, logout, password reset, and account management. With robust security measures in place, it ensures a seamless and secure experience for users throughout their interactions with the application.'
+  termsOfService: 'https://swagger.io/terms/'
+  contact:
+    name: 'Phan Minh Hung'
+    url: 'https://phanminhhung.id.vn'
+    email: hungpm372@gmail.com
+  license:
+    name: 'Apache 2.0'
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 1.0.0
+  x-logo:
+    url: 'https://via.placeholder.com/190x90.png?text=L5-Swagger'
+servers:
+  -
+    url: 'http://localhost:8000/api'
+paths:
+  /api/auth/register:
+    post:
+      tags:
+        - Register
+      summary: 'Register a new user'
+      description: 'User Registration Endpoint'
+      operationId: registerUser
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+              properties:
+                name:
+                  type: text
+                email:
+                  type: text
+                password:
+                  type: password
+                password_confirmation:
+                  type: password
+              type: object
+          application/json:
+            schema: []
+      responses:
+        201:
+          description: 'User Registered Successfully'
+          content:
+            application/json:
+              schema: []
+        200:
+          description: 'Registered Successfull'
+          content:
+            application/json:
+              schema: []
+        422:
+          description: 'Unprocessable Entity'
+          content:
+            application/json:
+              schema: []
+        400:
+          description: 'Bad Request'
+          content:
+            application/json:
+              schema: []
